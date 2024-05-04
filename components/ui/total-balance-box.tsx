@@ -13,17 +13,17 @@ const TotalBalanceBox = (props: Props) => {
   const { accounts, totalBanks, totalCurrentBalance } = props
 
   return (
-    <section className='border shadow-md min-h-10 mt-4 flex items-center justify-between font-bold p-4 w-max gap-4 flex-row'>
+    <section className='border shadow-md min-h-10 my-6 flex items-center font-bold p-4 w-full gap-4 flex-row'>
       <div>
           <DoughnutChart accounts={accounts} />
       </div>
 
-      <div className='flex flex-col gap-3 items-center text-lg'>
+      <div className='flex flex-col gap-3 items-start text-lg'>
         <h2>
           Banks Account: {totalBanks}
         </h2>
 
-        <div className='flex flex-col gap-1'>
+        <div className='flex flex-col gap-1 items-start'>
           <p className="font-normal">
             Total current balance
           </p>

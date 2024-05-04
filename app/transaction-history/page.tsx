@@ -1,8 +1,7 @@
+import TransactionHistory from "@/components/business/transaction-history";
 
 export default function TransactionHistoryPage() {
   return (
-    <div className="flex container">
-      fasdf
-    </div>
+    <TransactionHistory />
   );
 }

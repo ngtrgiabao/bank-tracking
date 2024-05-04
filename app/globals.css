@@ -74,3 +74,31 @@
       @apply bg-background text-foreground;
     }
   }
+
+  @layer utilities {
+     /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+     /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+    }
+  }
+
+.right-sidebar {
+  @apply no-scrollbar hidden h-screen max-h-screen flex-col border-l border-slate-500 xl:flex min-w-[300px] 2xl:min-w-[480px] xl:overflow-y-scroll !important;
+}
+
+.profile-banner {
+  @apply h-[120px] w-full bg-cover bg-no-repeat bg-[url('/fake/profile-banner.jpg')] rounded-md border-2 border-slate-300 bg-center;
+}
+
+.profile {
+  @apply relative flex max-xl:justify-center
+}
+
+.profile-img {
+  @apply absolute -top-10 left-5 w-20 h-20 rounded-full bg-indigo-700 border-8 border-white flex items-center justify-center text-4xl text-white font-bold shadow-lg;
+}

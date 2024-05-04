@@ -9,7 +9,7 @@ export function formatAmount(amount: number): string {
   const formatter = new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: "VND",
-    minimumIntegerDigits: 2,
+    minimumFractionDigits: 3,
   })
 
   return formatter.format(amount);

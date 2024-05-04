@@ -1,8 +1,7 @@
+import MyBanks from "@/components/business/my-banks";
 
 export default function MyBanksPage() {
   return (
-    <div className="flex container">
-      fasdf
-    </div>
+    <MyBanks />
   );
 }
