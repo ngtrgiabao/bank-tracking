@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Sidebar from "@/components/ui/sidebar";
+import Image from "next/image";
+import MobileNav from "@/components/ui/mobile-nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,10 +17,35 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const loggedIn = {
+    firstName: "Yanji",
+    lastName: "Haha",
+  }
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
+        <main className="flex">
+          <Sidebar user={loggedIn} />
+
+          <div className="flex size-full flex-col">
+            <div className="flex items-center justify-between p-4 w-full shadow-md md:hidden">
+              <Image
+                src="https://i.pinimg.com/564x/90/af/12/90af12758c4f2881b57866bfeffc0d92.jpg"
+                width={40}
+                height={40}
+                alt="logo"
+                className="rounded-full"
+              />
+
+              <div>
+                <MobileNav user={loggedIn} />
+              </div>
+            </div>
+
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   );

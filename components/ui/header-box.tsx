@@ -12,7 +12,7 @@ const HeaderBox = (props: Props) => {
 
   return (
     <div>
-      <h1 className='text-4xl font-bold'>
+      <h1 className='text-2xl font-bold'>
         {title}
         {
           type === "greeting" && (
@@ -22,7 +22,7 @@ const HeaderBox = (props: Props) => {
           )
         }
       </h1>
-      <p className='text-xl'>{subtext}</p>
+      <p className='text-lg'>{subtext}</p>
     </div>
   )
 }

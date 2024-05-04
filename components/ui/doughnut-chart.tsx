@@ -24,7 +24,7 @@ const DoughnutChart = (props: Props) => {
   }
 
   return (
-    <Doughnut data={data} options={{
+    <Doughnut data={data} width={"120%"} height={"120%"} options={{
       plugins: {
         legend: {
           display: false

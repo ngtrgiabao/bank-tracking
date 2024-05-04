@@ -13,7 +13,7 @@ const AnimatedCounter = (props: Props) => {
   return (
     <section>
       <CountUp
-        duration={2.75}
+        duration={1}
         decimals={2}
         decimal='.'
         end={amount}

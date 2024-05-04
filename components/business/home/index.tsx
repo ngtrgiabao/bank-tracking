@@ -17,7 +17,7 @@ function Home(props: Props) {
   }
 
   return (
-    <div className={cn("p-5", className)}>
+    <div className={cn("py-5", className)}>
       <header>
         <HeaderBox
           type="greeting"

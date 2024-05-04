@@ -1,7 +1,3 @@
-declare interface SidebarProps {
-  user: User;
-}
-
 declare type User = {
   $id?: string;
   firstName: string;
