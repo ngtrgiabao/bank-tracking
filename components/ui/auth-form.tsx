@@ -14,8 +14,7 @@ import {
   Form,
 } from "@/components/ui/form"
 import { authFormSchema } from '@/lib/utils';
-import CustomInput from '../features/custom-input';
-import SignUp from '../business/auth/sign-up';
+import CustomInput from '@/components/features/custom-input';
 
 interface Props {
   type: string;
