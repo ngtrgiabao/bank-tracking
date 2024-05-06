@@ -25,11 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="flex">
+        <main className="flex min-h-screen w-full">
           <Sidebar user={loggedIn} />
 
           <div className="flex size-full flex-col">
-            <div className="flex items-center justify-between p-4 w-full shadow-md md:hidden">
+            <nav className="flex items-center justify-between p-4 w-full shadow-md lg:hidden">
               <Image
                 src="https://i.pinimg.com/564x/90/af/12/90af12758c4f2881b57866bfeffc0d92.jpg"
                 width={40}
@@ -41,7 +41,7 @@ export default function RootLayout({
               <div>
                 <MobileNav user={loggedIn} />
               </div>
-            </div>
+            </nav>
 
             {children}
           </div>

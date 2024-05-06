@@ -17,7 +17,7 @@ const Sidebar = (props: Props) => {
   const pathname = usePathname();
 
   return (
-    <nav className='hidden md:flex flex-col justify-between h-full min-w-max min-h-screen p-4 border-r border-slate-500'>
+    <nav className='hidden lg:flex flex-col justify-between min-w-max min-h-screen p-4 border-r border-slate-500'>
       <div className='flex flex-col gap-1'>
         <Link href="/" className='mb-4 cursor-pointer gap-2 flex items-center'>
           <Image
