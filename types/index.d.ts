@@ -7,8 +7,8 @@ declare type User = {
   address2?: string;
   city?: string;
   state?: string;
-  dwalletCustomerUrl?: string;
-  dwalletCustomerId?: string;
+  dwollaCustomerUrl?: string;
+  dwollaCustomerId?: string;
   postalCode?: string;
   dateOfBirth?: string;
   ssn?: string;
@@ -36,4 +36,22 @@ declare type Bank = {
   fundingSourceUrl: string;
   userId: string;
   shareableId: string;
+};
+
+declare type SignUpParams = {
+  firstName: string;
+  lastName: string;
+  address1: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  dateOfBirth: string;
+  ssn: string;
+  email: string;
+  password: string;
+};
+
+declare type SignInParams = {
+  email: string;
+  password: string;
 };

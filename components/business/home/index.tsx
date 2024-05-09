@@ -3,7 +3,7 @@ import isEqual from "react-fast-compare";
 
 import HeaderBox from "@/components/ui/header-box";
 import TotalBalanceBox from "@/components/ui/total-balance-box";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import RightSidebar from "@/components/ui/right-sidebar";
 
 interface Props {

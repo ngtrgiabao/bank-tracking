@@ -15,13 +15,14 @@ import {
 } from "@/components/ui/form"
 import { authFormSchema } from '@/lib/utils';
 import CustomInput from '@/components/features/custom-input';
+import { signIn, signUp } from '@/lib/actions/user';
 
 interface Props {
   type: string;
 }
 
 const AuthForm = (props: Props) => {
-  const { type } = props
+  const { type } = props;
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useRouter()
@@ -34,12 +35,11 @@ const AuthForm = (props: Props) => {
     defaultValues: {
       email: "",
       password: "",
-      username: ""
     },
   })
 
-  const handleSignIn = (data: z.infer<typeof formSchema>) => {
-    // const response = await SignIn({
+  const handleSignIn = async (data: any) => {
+    // const response = await signIn({
     //   email: data.email,
     //   password: data.password
     // })
@@ -50,9 +50,22 @@ const AuthForm = (props: Props) => {
   }
 
   const handleSignUp = async (data: z.infer<typeof formSchema>) => {
-    // const newUser = await signUp(data);
+    const userData = {
+      firstName: data.firstName!,
+      lastName: data.lastName!,
+      address1: data.address1!,
+      city: data.city!,
+      state: data.state!,
+      postalCode: data.postalCode!,
+      dateOfBirth: data.dateOfBirth!,
+      ssn: data.ssn!,
+      email: data.email,
+      password: data.password
+    }
 
-    // setUser(newUser);
+    const newUser = await signUp(userData);
+
+    setUser(newUser);
   }
 
   // 2. Define a submit handler.
@@ -62,7 +75,9 @@ const AuthForm = (props: Props) => {
     setIsLoading(true);
 
     try {
-
+      if (type === "sign-up") {
+        await handleSignUp(data);
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -112,52 +127,45 @@ const AuthForm = (props: Props) => {
 
           </div>
           :
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              {
-                type === "sign-up"
-                && (
-                  <>
-                    <section className='grid md:grid-cols-2 gap-4'>
-                      <CustomInput
-                        control={form.control}
-                        name="firstName"
-                        label="First Name"
-                        placeholder="Enter your first name"
-                      />
+          <>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                {
+                  type === "sign-up"
+                  && (
+                    <>
+                      <section className='grid md:grid-cols-2 gap-4'>
+                        <CustomInput
+                          control={form.control}
+                          name="firstName"
+                          label="First Name"
+                          placeholder="Enter your first name"
+                        />
 
-                      <CustomInput
-                        control={form.control}
-                        name="lastName"
-                        label="Last Name"
-                        placeholder="Enter your last name"
-                      />
-                    </section>
+                        <CustomInput
+                          control={form.control}
+                          name="lastName"
+                          label="Last Name"
+                          placeholder="Enter your last name"
+                        />
+                      </section>
 
-                    <section className='grid md:grid-cols-2 gap-4'>
-                      <CustomInput
-                        control={form.control}
-                        name="address1"
-                        label="Address"
-                        placeholder="Enter your address"
-                      />
+                      <section className='grid md:grid-cols-2 gap-4'>
+                        <CustomInput
+                          control={form.control}
+                          name="address1"
+                          label="Address"
+                          placeholder="Enter your address"
+                        />
 
-                      <CustomInput
-                        control={form.control}
-                        name="city"
-                        label="City"
-                        placeholder="Enter your city"
-                      />
-                    </section>
+                        <CustomInput
+                          control={form.control}
+                          name="city"
+                          label="City"
+                          placeholder="Enter your city"
+                        />
+                      </section>
 
-                    <CustomInput
-                      control={form.control}
-                      name="state"
-                      label="State"
-                      placeholder="Example: NY"
-                    />
-
-                    <section className='grid md:grid-cols-2 gap-4'>
                       <CustomInput
                         control={form.control}
                         name="state"
@@ -171,70 +179,69 @@ const AuthForm = (props: Props) => {
                         label="Postal Code"
                         placeholder="Example: 11101"
                       />
-                    </section>
 
-                    <section className='grid md:grid-cols-2 gap-4'>
+                      <section className='grid md:grid-cols-2 gap-4'>
+                        <CustomInput
+                          control={form.control}
+                          name="dateOfBirth"
+                          label="Date of Birth"
+                          placeholder="YYYY-MM-DD"
+                        />
+
+                        <CustomInput
+                          control={form.control}
+                          name="ssn"
+                          label="SSN"
+                          placeholder="Example: 1234"
+                        />
+                      </section>
+
                       <CustomInput
                         control={form.control}
-                        name="dataOfBirth"
-                        label="Date of Birth"
-                        placeholder="YYYY-MM-DD"
+                        name="email"
+                        label="Email"
+                        placeholder="Enter your email"
                       />
+                    </>
+                  )
+                }
 
-                      <CustomInput
-                        control={form.control}
-                        name="ssn"
-                        label="SSN"
-                        placeholder="Example: 1234"
-                      />
-                    </section>
-
+                {
+                  type === "sign-in" && (
                     <CustomInput
                       control={form.control}
                       name="email"
                       label="Email"
                       placeholder="Enter your email"
                     />
-                  </>
-                )
-              }
-
-              {
-                type === "sign-in" && (
-                  <CustomInput
-                    control={form.control}
-                    name="username"
-                    label="Username"
-                    placeholder="Enter your username"
-                  />
-                )
-              }
-
-              <CustomInput
-                control={form.control}
-                name="password"
-                label="Password"
-                placeholder="Enter your password"
-              />
-
-              <Button type="submit" disabled={isLoading} className='w-full text-md py-6'>
-                {
-                  isLoading ?
-                    <>
-                      <Loader2
-                        className='animate-spin'
-
-                      />
-                      &nbsp;
-                      Loading...
-                    </>
-                    :
-                    type === "sign-in"
-                      ? "Sign in" : "Sign up"
+                  )
                 }
-              </Button>
-            </form>
 
+                <CustomInput
+                  control={form.control}
+                  name="password"
+                  label="Password"
+                  placeholder="Enter your password"
+                />
+
+                <Button type="submit" disabled={isLoading} className='w-full text-md py-6'>
+                  {
+                    isLoading ?
+                      <>
+                        <Loader2
+                          className='animate-spin'
+
+                        />
+                        &nbsp;
+                        Loading...
+                      </>
+                      :
+                      type === "sign-in"
+                        ? "Sign in" : "Sign up"
+                  }
+                </Button>
+              </form>
+            </Form>
             <footer className='flex justify-center items-center gap-1 mt-4'>
               <p>
                 {
@@ -247,9 +254,9 @@ const AuthForm = (props: Props) => {
                 {type === "sign-in" ? "Sign up" : "Sign in"}
               </Link>
             </footer>
-          </Form>
+          </>
       }
-    </section>
+    </section >
   )
 }
 

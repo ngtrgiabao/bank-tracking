@@ -12,7 +12,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { cn } from "@/libs/utils"
+import { cn } from "@/lib/utils"
 import { sidebarLinks } from "@/constants"
 
 interface Props {
