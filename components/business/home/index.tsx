@@ -5,19 +5,21 @@ import HeaderBox from "@/components/ui/header-box";
 import TotalBalanceBox from "@/components/ui/total-balance-box";
 import { cn } from "@/lib/utils";
 import RightSidebar from "@/components/ui/right-sidebar";
+import { getLoggedInUser } from "@/lib/actions/user";
 
 interface Props {
   className?: string;
 }
 
-function Home(props: Props) {
+const guest = {
+  firstName: "Guest",
+  lastName: ""
+}
+
+async function Home(props: Props) {
   const { className } = props;
 
-  const loggedIn = {
-    firstName: "Yanji",
-    lastName: "Haha",
-    email: "contact@gmail.com"
-  }
+  const loggedIn = await getLoggedInUser();
 
   return (
     <section className={cn("flex w-full flex-col md:flex-row", className)}>
@@ -26,7 +28,7 @@ function Home(props: Props) {
           <HeaderBox
             type="greeting"
             title="Welcome"
-            user={loggedIn?.firstName || "Guest"}
+            user={loggedIn?.name || "Guest"}
             subtext="Access and manage your account and transactions efficiently."
           />
 
@@ -41,7 +43,7 @@ function Home(props: Props) {
       </div>
 
       <RightSidebar
-        user={loggedIn}
+        user={loggedIn ?? guest}
         banks={[{
           currentBalance: 123.50
         }, {

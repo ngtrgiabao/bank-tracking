@@ -39,12 +39,14 @@ const AuthForm = (props: Props) => {
   })
 
   const handleSignIn = async (data: any) => {
-    // const response = await signIn({
-    //   email: data.email,
-    //   password: data.password
-    // })
+    const response = await signIn({
+      email: data.email,
+      password: data.password
+    })
 
-    // if(response) {
+    // console.log(response)
+
+    // if (response) {
     //   navigate.push("/")
     // }
   }
@@ -77,6 +79,10 @@ const AuthForm = (props: Props) => {
     try {
       if (type === "sign-up") {
         await handleSignUp(data);
+      }
+
+      if (type === "sign-in") {
+        await handleSignIn(data);
       }
     } catch (error) {
       console.error(error);

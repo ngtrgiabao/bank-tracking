@@ -92,7 +92,7 @@
 }
 
 .profile-banner {
-  @apply h-[120px] w-full bg-cover bg-no-repeat bg-[url('/fake/profile-banner.jpg')] rounded-md border-2 border-slate-300 bg-center;
+  @apply h-[150px] w-full bg-cover bg-no-repeat bg-[url('/fake/profile-banner.jpg')] rounded-md border-2 border-slate-300 bg-center;
 }
 
 .profile {

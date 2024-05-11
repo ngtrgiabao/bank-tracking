@@ -15,20 +15,22 @@ const BankCard = (props: Props) => {
   return (
     <div className='flex flex-col max-w-[24rem]'>
       <Link href="/">
-        <div className='bg-[#1ba4f8] pr-4 h-44 shadow-md rounded-2xl pb-0 overflow-hidden flex text-white'>
-          <Image
-            src="/fake/card-avatar.jpg"
-            alt="avatar"
-            width={120}
-            height={300}
-            className='size-[120/300] h-full object-cover'
-          />
+        <div className='bg-bankcard pr-4 h-44 shadow-md rounded-2xl pb-0 overflow-hidden flex text-white'>
+          <div className='w-[14rem] max-w-[14rem]'>
+            <Image
+              src="/fake/card-avatar.png"
+              alt="avatar"
+              width={224}
+              height={224}
+              className='aspect-square w-full h-full object-cover'
+            />
+          </div>
 
           <section className='border-l border-white px-3 py-1 my-4 gap-1 flex flex-col justify-between w-full'>
             <div>
-              <h1 className='font-bold text-2xl'>
+              <h2 className='font-bold text-2xl'>
                 {account.name || username}
-              </h1>
+              </h2>
 
               <p>
                 {
@@ -39,18 +41,18 @@ const BankCard = (props: Props) => {
 
             <article className='flex flex-col gap-2'>
               <div className='flex justify-between items-center'>
-                <h1 className='text-12 font-semibold text-white'>
-                  {username}
-                </h1>
-
                 <h2 className='text-12 font-semibold text-white'>
-                  ●● / ●●
+                  {username}
                 </h2>
+
+                <span className='text-12 font-semibold text-white'>
+                  ●● / ●●
+                </span>
               </div>
 
-              <p className='text-14 font-semibold tracking-[1.1px] text-white'>
+              <span className='text-14 font-semibold tracking-[1.1px] text-white flex justify-between items-center'>
                 ●●●● ●●●● ●●●● <span className='text-16'>1234</span>
-              </p>
+              </span>
             </article>
           </section>
         </div>

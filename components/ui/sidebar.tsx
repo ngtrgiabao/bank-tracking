@@ -7,9 +7,10 @@ import React from 'react'
 
 import { cn } from '@/lib/utils';
 import { sidebarLinks } from '@/constants';
+import Footer from './footer';
 
 interface Props {
-  user: User;
+  user: User | any;
 }
 
 const Sidebar = (props: Props) => {
@@ -18,7 +19,7 @@ const Sidebar = (props: Props) => {
 
   return (
     <nav className='hidden lg:flex flex-col justify-between min-w-max min-h-screen p-4 border-r border-slate-500'>
-      <div className='flex flex-col gap-1'>
+      <div className='flex flex-col gap-1 truncate max-w-[15rem]'>
         <Link href="/" className='mb-4 cursor-pointer gap-2 flex items-center'>
           <Image
             src="https://i.pinimg.com/564x/90/af/12/90af12758c4f2881b57866bfeffc0d92.jpg"
@@ -28,8 +29,8 @@ const Sidebar = (props: Props) => {
             className='rounded-full size-[40px] max-xl:size-14'
           />
 
-          <h1 className='text-xl font-semibold'>
-            {user.firstName}
+          <h1 className="text-xl font-semibold">
+            Bank Tracking
           </h1>
         </Link>
 
@@ -67,7 +68,7 @@ const Sidebar = (props: Props) => {
         </span>
       </div>
 
-      FOOTER
+      <Footer user={user} />
     </nav>
   )
 }
