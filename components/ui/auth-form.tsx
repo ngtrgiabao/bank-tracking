@@ -44,11 +44,9 @@ const AuthForm = (props: Props) => {
       password: data.password
     })
 
-    // console.log(response)
-
-    // if (response) {
-    //   navigate.push("/")
-    // }
+    if (response) {
+      navigate.push("/")
+    }
   }
 
   const handleSignUp = async (data: z.infer<typeof formSchema>) => {

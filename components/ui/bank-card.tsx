@@ -26,7 +26,7 @@ const BankCard = (props: Props) => {
             />
           </div>
 
-          <section className='border-l border-white px-3 py-1 my-4 gap-1 flex flex-col justify-between w-full'>
+          <section className='border-l border-white px-3 py-1 my-4 gap-3 flex flex-col justify-between w-full'>
             <div>
               <h2 className='font-bold text-2xl'>
                 {account.name || username}
@@ -39,21 +39,15 @@ const BankCard = (props: Props) => {
               </p>
             </div>
 
-            <article className='flex flex-col gap-2'>
-              <div className='flex justify-between items-center'>
-                <h2 className='text-12 font-semibold text-white'>
-                  {username}
-                </h2>
-
-                <span className='text-12 font-semibold text-white'>
-                  ●● / ●●
-                </span>
-              </div>
+            <div className='flex flex-col'>
+              <span className='text-10 font-semibold text-white'>
+                ●● / ●●
+              </span>
 
               <span className='text-14 font-semibold tracking-[1.1px] text-white flex justify-between items-center'>
                 ●●●● ●●●● ●●●● <span className='text-16'>1234</span>
               </span>
-            </article>
+            </div>
           </section>
         </div>
       </Link>
