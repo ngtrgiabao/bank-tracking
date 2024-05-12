@@ -26,10 +26,10 @@ const BankCard = (props: Props) => {
             />
           </div>
 
-          <section className='border-l border-white px-3 py-1 my-4 gap-3 flex flex-col justify-between w-full'>
-            <div>
+          <section className='border-l border-white px-3 py-1 my-4 gap-3 flex flex-col justify-between w-full max-w-full truncate'>
+            <section>
               <h2 className='font-bold text-2xl'>
-                {account.name || username}
+                {username ?? "Guest"}
               </h2>
 
               <p>
@@ -37,9 +37,9 @@ const BankCard = (props: Props) => {
                   account.currentBalance ? formatAmount(account.currentBalance) : "0 VND"
                 }
               </p>
-            </div>
+            </section>
 
-            <div className='flex flex-col'>
+            <section className='flex flex-col'>
               <span className='text-10 font-semibold text-white'>
                 ●● / ●●
               </span>
@@ -47,7 +47,7 @@ const BankCard = (props: Props) => {
               <span className='text-14 font-semibold tracking-[1.1px] text-white flex justify-between items-center'>
                 ●●●● ●●●● ●●●● <span className='text-16'>1234</span>
               </span>
-            </div>
+            </section>
           </section>
         </div>
       </Link>

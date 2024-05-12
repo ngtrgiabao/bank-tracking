@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import Sidebar from "@/components/ui/sidebar";
 import Image from "next/image";
+
+import Sidebar from "@/components/ui/sidebar";
 import MobileNav from "@/components/ui/mobile-nav";
 import { getLoggedInUser } from "@/lib/actions/user";
+
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +39,7 @@ export default async function RootLayout({
               />
 
               <div>
-                {/* <MobileNav user={loggedIn} /> */}
+                <MobileNav user={loggedIn} />
               </div>
             </nav>
 
